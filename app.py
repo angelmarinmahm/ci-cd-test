@@ -12,15 +12,13 @@ def es_contrasena_segura(contrasena: str) -> dict:
 
     analisis = {
         "longitud_aceptada": len(contrasena) >= 8,
-        "tiene_mayuscula": any(c.isuppper() for c in contrasena),
+        "tiene_mayuscula": any(c.isupper() for c in contrasena),
         "tiene_minuscula": any(c.islower() for c in contrasena),
         "tiene_numero": any(c.isdigit() for c in contrasena),
         "tiene_caracter_especial": any(c in caracteres_especiales_aceptados for c in contrasena)
     }
 
     # La contraseña es aceptada como segura si cumple todos los criterios
-
     analisis["es_segura"] = all(analisis.values())
 
     return analisis
-
